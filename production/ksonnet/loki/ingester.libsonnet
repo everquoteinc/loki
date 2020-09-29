@@ -42,7 +42,8 @@
     deployment.mixin.spec.withMinReadySeconds(60) +
     deployment.mixin.spec.strategy.rollingUpdate.withMaxSurge(0) +
     deployment.mixin.spec.strategy.rollingUpdate.withMaxUnavailable(1) +
-    deployment.mixin.spec.template.spec.withTerminationGracePeriodSeconds(4800)
+    deployment.mixin.spec.template.spec.withTerminationGracePeriodSeconds(4800) +
+    deployment.mixin.spec.template.spec.withServiceAccount('loki-ingester')
     else {},
 
   ingester_data_pvc:: if $._config.stateful_ingesters then
@@ -61,7 +62,8 @@
     $.util.antiAffinity +
     statefulSet.mixin.spec.updateStrategy.withType('RollingUpdate') +
     statefulSet.mixin.spec.template.spec.securityContext.withFsGroup(10001) +  // 10001 is the group ID assigned to Loki in the Dockerfile
-    statefulSet.mixin.spec.template.spec.withTerminationGracePeriodSeconds(4800)
+    statefulSet.mixin.spec.template.spec.withTerminationGracePeriodSeconds(4800) +
+    statefulSet.mixin.spec.template.spec.withServiceAccount('loki-ingester')
     else {},
 
   ingester_service:
