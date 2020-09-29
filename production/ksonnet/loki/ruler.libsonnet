@@ -13,8 +13,7 @@
       $.util.resourcesRequests('1', '6Gi') +
       $.util.resourcesLimits('16', '16Gi') +
       $.util.readinessProbe +
-      $.jaeger_mixin
-    else {},
+      $.jaeger_mixin,
 
   local deployment = $.apps.v1.deployment,
 
@@ -25,13 +24,11 @@
       $.config_hash_mixin +
       $.util.configVolumeMount('loki', '/etc/loki/config') +
       $.util.configVolumeMount('overrides', '/etc/loki/overrides') +
-      $.util.antiAffinity
-    else {},
+      $.util.antiAffinity,
 
   local service = $.core.v1.service,
 
   ruler_service:
     if $._config.ruler_enabled then
-      $.util.serviceFor($.ruler_deployment)
-    else {},
+      $.util.serviceFor($.ruler_deployment),
 }
