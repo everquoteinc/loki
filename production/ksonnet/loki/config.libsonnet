@@ -340,7 +340,7 @@
             bucket_name: '%(cluster)s-%(namespace)s-ruler' % $._config,
           },
         },
-      } else {},
+      },
 
     },
   },
