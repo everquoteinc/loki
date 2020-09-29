@@ -45,6 +45,9 @@
     deployment.mixin.spec.template.spec.withTerminationGracePeriodSeconds(4800) +
     deployment.mixin.spec.template.spec.withServiceAccount('loki-ingester')
     else {},
+    deployment.mixin.spec.template.spec.withTerminationGracePeriodSeconds(4800) +
+    deployment.mixin.spec.template.spec.withServiceAccount('loki-ingester')
+    else {},
 
   ingester_data_pvc:: if $._config.stateful_ingesters then
     pvc.new('ingester-data') +
