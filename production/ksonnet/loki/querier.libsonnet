@@ -30,7 +30,8 @@
     $.config_hash_mixin +
     $.util.configVolumeMount('loki', '/etc/loki/config') +
     $.util.configVolumeMount('overrides', '/etc/loki/overrides') +
-    $.util.antiAffinity
+    $.util.antiAffinity +
+    deployment.mixin.spec.template.spec.withServiceAccount('loki-querier')
     else {},
 
   // PVC for queriers when running as statefulsets
@@ -49,7 +50,8 @@
     $.util.configVolumeMount('overrides', '/etc/loki/overrides') +
     $.util.antiAffinity +
     statefulSet.mixin.spec.updateStrategy.withType('RollingUpdate') +
-    statefulSet.mixin.spec.template.spec.securityContext.withFsGroup(10001)  // 10001 is the group ID assigned to Loki in the Dockerfile
+    statefulSet.mixin.spec.template.spec.securityContext.withFsGroup(10001) +  // 10001 is the group ID assigned to Loki in the Dockerfile
+    statefulSet.mixin.spec.template.spec.withServiceAccount('loki-querier')
     else {},
 
   querier_service:
