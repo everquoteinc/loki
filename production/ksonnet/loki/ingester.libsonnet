@@ -45,9 +45,12 @@
     deployment.mixin.spec.template.spec.withTerminationGracePeriodSeconds(4800) +
     deployment.mixin.spec.template.spec.withServiceAccount('loki-ingester')
     else {},
+<<<<<<< HEAD
     deployment.mixin.spec.template.spec.withTerminationGracePeriodSeconds(4800) +
     deployment.mixin.spec.template.spec.withServiceAccount('loki-ingester')
     else {},
+=======
+>>>>>>> 2cacd0d7 (add service accounts: querier, table manager)
 
   ingester_data_pvc:: if $._config.stateful_ingesters then
     pvc.new('ingester-data') +

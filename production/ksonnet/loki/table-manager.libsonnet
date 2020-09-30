@@ -34,7 +34,6 @@
     $.util.configVolumeMount('loki', '/etc/loki/config') +
     deployment.mixin.spec.template.spec.withServiceAccount('loki-table-manager'),
 
-
   table_manager_service:
     $.util.serviceFor($.table_manager_deployment),
 }
