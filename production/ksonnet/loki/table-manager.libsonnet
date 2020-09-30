@@ -32,7 +32,7 @@
     deployment.new('table-manager', 1, [$.table_manager_container]) +
     $.config_hash_mixin +
     $.util.configVolumeMount('loki', '/etc/loki/config') +
-    deployment.mixin.spec.template.spec.withServiceAccount('loki-table-manager'),
+    deployment.mixin.spec.template.withServiceAccount('loki-table-manager'),
 
   table_manager_service:
     $.util.serviceFor($.table_manager_deployment),
