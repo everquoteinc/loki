@@ -318,7 +318,7 @@
             },
           },
         },
-      }
+      },
 
       + (if $._config.ruler_enabled then {
       ruler:
