@@ -320,8 +320,7 @@
         },
       },
 
-      (if $._config.ruler_enabled then {
-      ruler:
+      /*ruler: if $._config.ruler_enabled then {
         rule_path: '/tmp/rules',
         enable_api: true,
         alertmanager_url: 'http://alertmanager.%s.svc.cluster.local/alertmanager' % $._config.namespace,
@@ -341,7 +340,8 @@
             bucket_name: '%(cluster)s-%(namespace)s-ruler' % $._config,
           },
         },
-      })
+      } else {}, */
+
     },
   },
 
