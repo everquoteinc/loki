@@ -49,8 +49,8 @@
     pvc.new('ingester-data') +
     pvc.mixin.spec.resources.withRequests({ storage: '10Gi' }) +
     pvc.mixin.spec.withAccessModes(['ReadWriteOnce']) +
-    pvc.mixin.spec.withStorageClassName('fast')
-  else {},
+    pvc.mixin.spec.withStorageClassName($._config.ingester_pvc_class)
+    else {},
 
   ingester_statefulset: if $._config.stateful_ingesters then
     statefulSet.new('ingester', 3, [$.ingester_container], $.ingester_data_pvc) +

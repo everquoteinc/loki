@@ -38,8 +38,8 @@
     pvc.new('querier-data') +
     pvc.mixin.spec.resources.withRequests({ storage: $._config.querier_pvc_size }) +
     pvc.mixin.spec.withAccessModes(['ReadWriteOnce']) +
-    pvc.mixin.spec.withStorageClassName('fast')
-  else {},
+    pvc.mixin.spec.withStorageClassName($._config.querier_pvc_class)
+    else {},
 
   querier_statefulset: if $._config.stateful_queriers then
     statefulSet.new('querier', 3, [$.querier_container], $.querier_data_pvc) +
