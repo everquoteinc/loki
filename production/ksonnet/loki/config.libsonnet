@@ -321,6 +321,7 @@
       },
 
       /* ruler: if $._config.ruler_enabled then {
+
         rule_path: '/tmp/rules',
         enable_api: true,
         alertmanager_url: 'http://alertmanager.%s.svc.cluster.local/alertmanager' % $._config.namespace,
