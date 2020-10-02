@@ -15,9 +15,11 @@
     // flags for running ingesters/queriers as a statefulset instead of deployment type.
     stateful_ingesters: false,
     ingester_pvc_size: '5Gi',
+    ingester_pvc_class: 'fast',
 
     stateful_queriers: false,
     querier_pvc_size: '10Gi',
+    querier_pvc_class: 'fast',
 
     querier: {
       // This value should be set equal to (or less than) the CPU cores of the system the querier runs.
