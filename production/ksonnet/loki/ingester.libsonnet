@@ -8,11 +8,11 @@
     $._config.commonArgs {
       target: 'ingester',
     } + if $._config.stateful_ingesters then
-    {
-      // Disable chunk transfer when using statefulset since ingester which is going down won't find another
-      // ingester which is joining the ring for transferring chunks.
-      'ingester.max-transfer-retries': 0,
-    } else {},
+      {
+        // Disable chunk transfer when using statefulset since ingester which is going down won't find another
+        // ingester which is joining the ring for transferring chunks.
+        'ingester.max-transfer-retries': 0,
+      } else {},
 
   ingester_container::
     container.new('ingester', $._images.ingester) +
@@ -25,9 +25,9 @@
     $.util.resourcesRequests('1', '5Gi') +
     $.util.resourcesLimits('2', '10Gi') +
     if $._config.stateful_ingesters then
-        container.withVolumeMountsMixin([
-          volumeMount.new('ingester-data', '/data'),
-        ]) else {},
+      container.withVolumeMountsMixin([
+        volumeMount.new('ingester-data', '/data'),
+      ]) else {},
 
   local deployment = $.apps.v1.deployment,
 
