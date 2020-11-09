@@ -91,6 +91,12 @@
     deployment.new('gateway', 3, [
       $.gateway_container,
     ]) +
+<<<<<<< HEAD
+=======
+    deployment.mixin.spec.template.metadata.withAnnotationsMixin({
+      config_hash: std.md5(std.toString($.gateway_config)),
+    }) +
+>>>>>>> 5ef4ded3 (gateway: fix regression in tanka jsonnet)
     $.util.configVolumeMount('gateway-config', '/etc/nginx') +
     $.util.secretVolumeMount('gateway-secret', '/etc/nginx/secrets', defaultMode=420) +
     $.util.antiAffinity,
